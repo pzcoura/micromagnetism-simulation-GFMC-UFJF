@@ -192,7 +192,7 @@
     Use VARIAVEIS
     integer :: allocateStatus,ip,i,j,k
 !
-    open(20,file='dados_entrada_artigo')
+    open(20,file='input.dat')
     read(20,*)xmax,ymax,ncx,ncy,zmax,flag_cut,cut,flag_cor,tipo,x0,y0,raio,exps,lim_raio,lim_raio1
     read(20,*)ap,mags,jota,aniso,dm,tipo_dm,alfa,teta_SHE,polar_sot,dt,ntpassos,npequi,num_it
     read(20,*)pol,je,adiaba
