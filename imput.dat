@@ -1,0 +1,214 @@
+60
+10
+0
+0
+1
+1
+15
+0
+1
+0
+0
+3.5d0
+0.3d0
+20
+20
+2D-09
+5.8D+05
+1.5D-11
+0D+06
+0D-03
+0
+0.1
+0.075
+2
+2.0d-15
+1200000
+1
+5000
+0.4d0
+0.D+12
+0.35d0
+1
+1
+1
+1
+1
+1
+1
+0
+-100
+100
+-6
+6
+0
+0
+10
+5
+2
+1
+0
+1
+0
+-210
+210
+360
+201
+1
+0
+0
+0
+0
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Brief explanation of this input file.All length units here are in lattice units.                        The line corresponding above
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+50      ! xmax => number of layers in the x-direction (total = 2*xmax + 1, always odd).                 ======> 1
+50      ! ymax => number of layers in the y-direction (total = 2*ymax + 1, always odd).                 ======> 2
+        ! Layers are numbered from -xmax to xmax and -ymax to ymax.
+0       ! ncx = 1 adds one layer to the total in the x-direction (total = 2*xmax + 2 => even).          ======> 3
+0       ! ncy = 1 adds one layer to the total in the y-direction (total = 2*ymax + 2 => even).          ======> 4
+2       ! number of layers in the z-direction. Layers are numbered from 1 to zmax.                      ======> 5
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+0       ! If flag_cut=0, no cutoff radius.                                                              ======> 6
+        ! If flag_cut=1, with cutoff radius.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+40      ! cut => cutoff radius (cut) in lattice parameters.                                             ======> 7
+        ! If cut=-1 and flag_cut=1, it will use effective K - only works in FM.
+        ! To disable dipolar interaction, choose flag_cut=1 and cut=0.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+0       ! If flag_cor=0, STT interaction.                                                               ======> 8
+        ! If flag_cor=1, SHE interaction.
+        ! If flag_cor=3, no interaction.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+4       ! Magnetic domain type.                                                                         ======> 9
+        ! If tipo=1, Neel or Bloch type skyrmion. See definitions in lines 49 and 50
+        ! If tipo=2, AFM Neel or Bloch skyrmion. See definitions in lines 49 and 50
+        ! If tipo=3, Neel type domain wall, in FM out-of-plane Co/Pt
+        ! If tipo=4(-4), head to head (tail to tail) type domain wall in-plane
+        ! If tipo=6 (-6), vortex (anti-vortex)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+0       ! x0 => center of the skyrmion, domain wall, or vortex.                                         ======> 10
+0       ! y0 => center of the skyrmion, domain wall, or vortex.                                         ======> 11
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+5d0     ! radius => Radius of the skyrmion or width of the domain wall (type=3, type=4(-4))             ======> 12
+        ! in lattice parameters
+0.3d0   ! exps => Default value for one of the parameters used to define the magnetization vector       ======> 13
+        ! (initial configuration) achar referência.
+20      ! lim_radius => Distance to the initial domain center in lattice parameters                     ======> 14
+        ! to determine the center. If the domain velocity is too high, this
+        ! method may fail.
+20      ! lim_radius1 => Distance to the domain center in lattice parameters                            ======> 15
+        ! to determine the domain radius.
+        ! The values 20 and 20 usually work for all cases studied here.
+        ! Unless it is noticed that the skyrmion radius or the skyrmion center
+        ! is not being properly determined, you can vary this value to try to
+        ! obtain values consistent with visualization using programs like Xmakemol.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+2E-09   ! ap => lattice parameter (Unit: meters)                                                        ======> 16
+5.8E+06 ! mags => saturation magnetization (Unit: Ampere/meter)                                         ======> 17
+1.5E-11 ! jota => stiffness constant (unit: Joule/meter)                                                ======> 18
+6E+05   ! aniso => anisotropic interaction (Unit: Joule/m^3)                                            ======> 19
+4E-03   ! dm => Dzyaloshinskii-Moriya interaction (Unit: Joule/m^2)                                     ======> 20
+1       ! If tipo_dm=0, interfacial DMI skyrmion. If tipo_dm=1, Bloch (bulk).                           ======> 21
+        ! If tipo_dm=2, D_2d type symmetry.
+        ! See ref. https://doi.org/10.1088/1367-2630/aaea1c for more details.
+0.5     ! alpha => damping constant                                                                     ======> 22
+0.08    ! theta_she => effective spin Hall angle - SOT interaction                                      ======> 23
+2       ! polar_sot=1(2)- polarization direction x(y) when it is used SOT                               ======> 24
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+1E-15   ! dt => time step (in seconds)                                                                  ======> 25
+100000  ! ntpassos => total number of steps                                                             ======> 26
+30000   ! npequi => number of steps for equilibrium                                                     ======> 27
+10000   ! num_it => number of steps for output results                                                  ======> 28
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+0.7     ! pol => spin current polarization  dimensionless)                                              ======> 29
+1E+12   ! je => polarization current intensity (Unit: A/m²)                                             ======> 30
+0.35    ! adiaba => adiabatic constant (dimensionless)                                                  ======> 31
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+0       ! impu=0, no impurities                                                                         ======> 32
+        ! impu=1, with impurities
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+1       ! magty => ratio mag_impurity/mag_host                                                          ======> 33
+1       ! jotaty_1 => ratio exchange_impurity_host/exchange_host                                        ======> 34
+1       ! jotaty_2 => ratio exchange_impurity_impurity/exchange_host                                    ======> 35
+1       ! dmty_1 => ratio DM_impurity_host/DM_host                                                      ======> 36
+1       ! dmty_2 => ratio DM_impurity_impurity/DM_host                                                  ======> 37
+1       ! anisoty_1 => ratio anisotropy_impurity/anisotropy_host                                        ======> 38
+        ! see ref. doi: 10.1063/5.0283786
+        ! Magnetic impurity engineering for positional control of antiferromagnetic skyrmions
+        ! in logic devices applications, I. A. Santece and P. Z. Coura
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        ! Note: The system center is at (0,0).
+        ! The impurity positions are given in lattice parameters relative to the center of the
+        ! ribbon. For example, pxi=-5 means 5 lattice parameters to the left of the ribbon's center.
+        ! Even in curved systems, the position is relative to a reference frame fixed to the ribbon.
+
+1       ! If forma_imp=1(0) it will be a circular(rectangular) area                                     ======> 39
+3       ! pxi => initial x-position of the impurity                                                     ======> 40
+5       ! pxf => final x-position of the impurity                                                       ======> 41
+-1      ! pyi => initial y-position of the impurity                                                     ======> 42
+1       ! pyf => final y-position of the impurity                                                       ======> 43
+0       ! pxic => x-coordinate of the impurity center                                                   ======> 44
+0       ! pyjc => y-coordinate of the impurity center                                                   ======> 45
+10      ! raio_imp => impurity radius if forma_imp=1. We have a circular area.                          ======> 46
+5       ! raio_imp1 => inner impurity radius. An annular area with                                      ======> 47
+        ! outer radius raio_imp and inner radius raio_imp1.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+1       ! nano => Defines the structure type. If nanowire(1) or nanocylinder(2)                         ======> 48
+        ! open nanocylinder(3)
+1       ! m_tip => Defines the skyrmion type:                                                           ======> 49
+        ! ref. PUBLISHED ONLINE: 4 DECEMBER 2013 | DOI: 10.1038/NNANO.2013.243
+3.1416  ! gama_tip => Defines the skyrmion type. Ref. above.                                            ======> 50
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        ! Below are some options for generating geometric defects in the nanowire.
+        !
+1       ! direc=1(2) defines the x(y) direction in which the defect is located.                         ======> 51
+0       ! direc_tipo=(0)(4)(5)(6) defines the type of defect;                                           ======> 52
+        !
+        !        0 => no defect
+        !
+        !        4 => Smooth defect. The surface slope is
+        !             implemented smoothly following a circular arc
+        !             (see lines 53, 54, 55, and 56)
+        !             Journal of Magnetism and Magnetic Materials 568 (2023) 170386
+        !             https://doi.org/10.1016/j.jmmm.2023.170386
+        !
+        !        5 => The defect consists of a flat section in the intervals [-ymax, nl1]
+        !             and [nl2, ymax], with a curved surface in the interval [nl1, nl2].
+        !             All coordinates are relative to the origin (center of the surface).
+        !             If nl1 < -ymax and nl2 > ymax, the entire surface within the interval
+        !             [-ymax, ymax] becomes curved. The spacing between cells remains unchanged.
+        !             To locate the surface definition in the code, search for one of the
+        !             following strings:
+        !             - "Function to generate a curved surface in the X direction"
+        !             - "Function to generate a curved surface in the Y direction"
+        !             The function must be defined in three lines. An example to be followed
+        !             is already provided.
+        !
+        !
+        !        6 => helix around the x-axis (use nano=1)
+        !
+4       ! Initial position nl1, in the x(y) direction, from which                                       ======> 53
+        ! the surface slope begins (options 4 and 5)
+14      ! Final position nl2, in the x(y) direction, from which                                         ======> 54
+        ! the surface slope ends (options 4 and 5).
+        ! In this case, the slope starts at -xmax(-ymax) and ends at nl1 on
+        ! the left side, and on the right side starts at nl2 and ends at xmax(ymax)
+        ! Note: The difference nl2-nl1 must be even.
+        !
+30      ! beta => inclination angle in degrees if direct_tipo= 6                                        ======> 55
+        ! If direc_tipo=4 or if nano=3, this variable indicates the radius
+        ! of curvature in lattice units.
+50      ! passo=> The helix makes a rotation of angle beta for each step length "passo".                ======> 56
+-1      ! concav=(1) or (-1) if direc_tipo=4, the curved part can have                                  ======> 57
+        ! concavity facing upwards (1) or downwards (-1)
+0       ! x-component of external magnetic field in Tesla                                               ======> 58
+0       ! y-component of external magnetic field in Tesla                                               ======> 59
+0       ! z-component of external magnetic field in Tesla                                               ======> 60
+0       ! adams=0 Integration uses Adams–Bashforth (explicit), without the corrector.                   ======> 61
+        ! adams=1 Integration uses Adams–Moulton (implicit), with the corrector.
+        ! adams=2 Integration uses fourth-order Runge-Kutta.
+
+
+
